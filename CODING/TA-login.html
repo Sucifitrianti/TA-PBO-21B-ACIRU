@@ -1,42 +1,193 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Reset Password</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #ddd;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-<meta charset="UTF-8">
+    .form-container {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
 
-<title>Login</title>
+    .form-header {
+      background: #27ae60;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
 
+    .form-group {
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #2ecc71;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #27ae60;
+    }
+
+    .success-container {
+      display: none;
+      background: #27ae60;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .success-header {
+      background: #27ae60;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .success-message {
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .reset-password-container {
+      display: none;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .reset-password-header {
+      background: #27ae60;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .reset-password-group {
+      padding: 20px;
+    }
+  </style>
 </head>
+<body>
 
-<body style="text-align: center;"> <h1 style="color: forestgreen; font-family Arial">Layanan Akademik </h1>
+<div class="form-container" id="loginForm">
+  <div class="form-header">
+    <h2>Layanan Akademik</h2>
+  </div>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter your username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <button onclick="login()">Login</button>
+    <button onclick="showResetPasswordForm()">Forgot Password</button>
+  </div>
+</div>
 
-<input style="width: 350px; height:25px; type="email" placeholder ="No Telepon or email address" name="email" autofocus required> <br>
+<div class="success-container" id="successContainer">
+  <div class="success-header">
+    <h2>Login Succsesfull</h2>
+  </div>
+  <div class="success-message">
+    <p>You have succsesfull logit it.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
 
-<br>
+<div class="reset-password-container" id="resetPasswordContainer">
+  <div class="reset-password-header">
+    <h2>Reset Password</h2>
+  </div>
+  <div class="reset-password-group">
+    <label for="resetEmail">Enter your email:</label>
+    <input type="email" id="resetEmail" placeholder="Enter your email">
+    <button onclick="sendResetLink()">Send Reset Link</button>
+    <button onclick="showLoginForm()">Back to Login</button>
+  </div>
+</div>
 
-<input style="width: 350px; height: 25px;" type="password" placeholder= "password" name="pass" required max="8"> <br>
+<script>
+  function login() {
+    // Implement your login logic here
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
 
-<br>
+    // Example: Check username and password
+    if (username === 'user' && password === 'pass') {
+      showSuccessMessage();
+    } else {
+      alert('Invalid username or password. Please try again.');
+    }
+  }
 
+  function showSuccessMessage() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('successContainer').style.display = 'block';
+  }
 
+  function logout() {
+    // Implement your logout logic here
+    alert('Logout successful!');
+    showLoginForm();
+  }
 
-<button style="width: 350px; height:40px; background-color: forestgreen; color: white" type "submet"><b>Login</b></button><br>
+  function showResetPasswordForm() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('resetPasswordContainer').style.display = 'block';
+  }
 
- <br>
+  function sendResetLink() {
+    // Implement your password reset logic here
+    var resetEmail = document.getElementById('resetEmail').value;
 
-<div style="color:#1877F2">forgotten password?</div> <br>
+    // Example: Send reset link logic (you may implement your own logic here)
+    alert('A reset link has been sent to ' + resetEmail);
+  }
 
---or--
+  function showLoginForm() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('resetPasswordContainer').style.display = 'none';
+  }
+</script>
 
-<br>
-
-<br>
-
-<button style="width: 350px; height:30px;" type="text"> create new account</button>
-
-
- </body>
-
- </html>
+</body>
+</html>
