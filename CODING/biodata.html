@@ -1,42 +1,270 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Form Biodata</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form, table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Menyesuaikan padding dan border ke dalam lebar total */
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input[type="button"] {
+            padding: 10px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #biodataContainer {
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        #biodataContainer table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        #biodataContainer th, #biodataContainer td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            background-color: #fff; /* Mengubah warna latar belakang menjadi putih */
+        }
+
+        #biodataContainer th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+    </style>
+    <title>Form Biodata Mahasiswa</title>
 </head>
 <body>
-<form>
-	<p>
-		<label for="nama">Nama</label>
-		<input type="text" name="nama" id="nama">
-	</p>
-	<p>
-		<p>Jenis Kelamin : </p>
-		<input type="radio" name="jekel" value="pria" id="jekel1"> 
-		<label for="jekel1">Pria</label>
-		<input type="radio" name="jekel" value="wanita" id="jekel2"> 
-		<label for="jekel2">Wanita</label>
-	</p>
-	<p>
-		<label for="tgl-lahir">Tanggal Lahir</label>
-		<input type="date" name="tgl-lahir" id="tgl-lahir">
-	</p>
-	<p>
-		<label for="email">Email</label>
-		<input type="email" name="email" id="email">
-	</p>
-	<p>
-		<label for="alamat">Alamat</label>
-		<textarea cols="25" rows="3"></textarea>
-	</p>
-	<p>
-		<label for="no-hp">Nomor Handphone</label>
-		<input type="number" name="number" id="number">
-	</p>
-	<p>
-		<input type="reset" value="RESET">
-		<input type="submit" value="SUBMIT">
-	</p>
-</form>
+    <div class="container">
+        <h2>Form Biodata Mahasiswa</h2>
+        <form id="biodataForm" action="#" method="post">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="npm">NPM:</label>
+            <input type="text" id="npm" name="npm" required>
+
+            <label for="prodi">Program Studi:</label>
+            <input type="text" id="prodi" name="prodi" required>
+
+            <label for="tempat_lahir">Tempat Lahir:</label>
+            <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+
+            <label for="tgl_lahir">Tanggal Lahir:</label>
+            <input type="date" id="tgl_lahir" name="tgl_lahir" required>
+
+            <label for="jenis_kelamin">Jenis Kelamin:</label>
+            <select id="jenis_kelamin" name="jenis_kelamin" required>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
+            </select>
+
+            <label for="agama">Agama:</label>
+            <input type="text" id="agama" name="agama" required>
+
+            <label for="tahun_masuk">Tahun Masuk Kuliah:</label>
+            <input type="text" id="tahun_masuk" name="tahun_masuk" required>
+
+            <label for="alamat">Alamat:</label>
+            <textarea id="alamat" name="alamat" required></textarea>
+
+            <input type="submit" value="Save" id="saveButton">
+            <input type="button" value="Edit" id="editButton" style="display:none;">
+        </form>
+
+        <div id="biodataContainer" style="display:none;">
+            <h2>Biodata Mahasiswa</h2>
+            <table>
+                <tr>
+                    <th>Nama</th>
+                    <td id="displayNama"></td>
+                </tr>
+                <tr>
+                    <th>NPM</th>
+                    <td id="displayNpm"></td>
+                </tr>
+                <tr>
+                    <th>Program Studi</th>
+                    <td id="displayProdi"></td>
+                </tr>
+                <tr>
+                    <th>Tempat Lahir</th>
+                    <td id="displayTempatLahir"></td>
+                </tr>
+                <tr>
+                    <th>Tanggal Lahir</th>
+                    <td id="displayTglLahir"></td>
+                </tr>
+                <tr>
+                    <th>Jenis Kelamin</th>
+                    <td id="displayJenisKelamin"></td>
+                </tr>
+                <tr>
+                    <th>Agama</th>
+                    <td id="displayAgama"></td>
+                </tr>
+                <tr>
+                    <th>Tahun Masuk Kuliah</th>
+                    <td id="displayTahunMasuk"></td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td id="displayAlamat"></td>
+                </tr>
+            </table>
+            <input type="button" value="Save" id="saveButtonTable" style="display:none;">
+            <input type="button" value="Edit" id="editButtonTable" style="display:none;">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('biodataForm');
+            const saveButton = document.getElementById('saveButton');
+            const editButton = document.getElementById('editButton');
+            const saveButtonTable = document.getElementById('saveButtonTable');
+            const editButtonTable = document.getElementById('editButtonTable');
+            const biodataContainer = document.getElementById('biodataContainer');
+            const displayNama = document.getElementById('displayNama');
+            const displayNpm = document.getElementById('displayNpm');
+            const displayProdi = document.getElementById('displayProdi');
+            const displayTempatLahir = document.getElementById('displayTempatLahir');
+            const displayTglLahir = document.getElementById('displayTglLahir');
+            const displayJenisKelamin = document.getElementById('displayJenisKelamin');
+            const displayAgama = document.getElementById('displayAgama');
+            const displayTahunMasuk = document.getElementById('displayTahunMasuk');
+            const displayAlamat = document.getElementById('displayAlamat');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevents the form from submitting
+
+                // Get form values
+                const nama = document.getElementById('nama').value;
+                const npm = document.getElementById('npm').value;
+                const prodi = document.getElementById('prodi').value;
+                const tempat_lahir = document.getElementById('tempat_lahir').value;
+                const tgl_lahir = document.getElementById('tgl_lahir').value;
+                const jenis_kelamin = document.getElementById('jenis_kelamin').value;
+                const agama = document.getElementById('agama').value;
+                const tahun_masuk = document.getElementById('tahun_masuk').value;
+                const alamat = document.getElementById('alamat').value;
+
+                // Display biodata
+                displayNama.textContent = nama;
+                displayNpm.textContent = npm;
+                displayProdi.textContent = prodi;
+                displayTempatLahir.textContent = tempat_lahir;
+                displayTglLahir.textContent = tgl_lahir;
+                displayJenisKelamin.textContent = jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan';
+                displayAgama.textContent = agama;
+                displayTahunMasuk.textContent = tahun_masuk;
+                displayAlamat.textContent = alamat;
+
+                // Show biodata container
+                biodataContainer.style.display = 'block';
+
+                // Hide form, show edit button
+                form.style.display = 'none';
+                editButton.style.display = 'block';
+                saveButton.style.display = 'none';
+                saveButtonTable.style.display = 'none';
+                editButtonTable.style.display = 'none';
+            });
+
+            editButton.addEventListener('click', function () {
+                // Show form, hide biodata container
+                form.style.display = 'flex';
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline';
+                saveButtonTable.style.display = 'none';
+                editButtonTable.style.display = 'none';
+
+                // Hide biodata container
+                biodataContainer.style.display = 'none';
+            });
+
+            saveButtonTable.addEventListener('click', function () {
+                // Show form, hide biodata container
+                form.style.display = 'flex';
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline';
+                saveButtonTable.style.display = 'none';
+                editButtonTable.style.display = 'none';
+
+                // Hide biodata container
+                biodataContainer.style.display = 'none';
+            });
+
+            editButtonTable.addEventListener('click', function () {
+                // Show form, hide biodata container
+                form.style.display = 'flex';
+                editButton.style.display = 'none';
+                saveButton.style.display = 'inline';
+                saveButtonTable.style.display = 'none';
+                editButtonTable.style.display = 'none';
+
+                // Hide biodata container
+                biodataContainer.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
