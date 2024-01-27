@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pembayaran SMP Muhammadiyah 3 Bandar Lampung</title>
+    <style>
+  body {
+    background-color: #e6f7e6; /* Light green background */
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+
+  .navbar {
+    background-color: #4caf50; /* Green background */
+    overflow: hidden;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    background-color: #ddd; /* Light grey background on hover */
+    color: #000; /* Black text on hover */
+  }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('smp.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; 
+        }
+
+        h2 {
+            text-align: center; 
+             h2 {
+            text-align: center; 
+            background-color: rgb(30, 139, 23); 
+            padding: 7px; 
+            font-family: 'Arial', sans-serif; 
+            color: white;
+        }
+            background-color: rgb(30, 139, 23); 
+            padding: 7px; 
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <a href="#">Biodata</a>
+  <a href="#">Pembayaran </a>
+</div>
+
+        
+    </style>
+</head>
+<body>
+  
+        
+       
+
+    <h2>Selamat Datang di Layanan Pembayaran SMP Muhammadiyah 3 Bandar Lampung! <br>
+        Silahkan Isi data yang tertera dibawah ini untuk melakukan pembayaran</h2>
+
+    <form id="paymentForm">
+        <label for="paymentType">Pilih Jenis Pembayaran:</label>
+        <select id="paymentType" name="paymentType">
+            <option value="SPP">SPP</option>
+            <option value="BUKU">BUKU</option>
+                    <option value="S"> SERAGAM SEKOLAH (S)</option>
+                    <option value="M">SERAGAM SEKOLAH (M)</option>
+                    <option value="L"> SERAGAM SEKOLAH(L)</option>
+                    <option value="XL"> SERAGAM SEKOLAH (XL)</option>
+                    <option value="XXL"> SERAGAM SEKOLAH (XXL)</option>
+                </select>
+            </option>
+        </select>
+
+        <!-- Input untuk Nama Lengkap Siswa -->
+        <label for="studentName">Nama Lengkap Siswa SMP Muhammadiyah 3 Bandar Lampung</label>
+        <input type="text" id="studentName" name="studentName" placeholder="Isi Nama Lengkap Siswa SMP N 3 Muhammadiyah" required>
+
+        <!-- Pilihan Kelas -->
+        <label for="class">Pilih Kelas</label>
+        <select id="class" name="class">
+            <option value="7">Kelas 7</option>
+            <option value="8">Kelas 8</option>
+            <option value="9">Kelas 9</option>
+        </select>
+
+        <!-- Pilihan Metode Pembayaran -->
+        <label for="paymentMethod">Pilih Metode Pembayaran:</label>
+        <select id="paymentMethod" name="paymentMethod">
+            <option value="BRI">
+                <img src="bri.png" alt="Logo BRI">
+                BRI 
+            </option>
+            <option value="DANA">
+                <img src="dana.png" alt="Logo DANA">
+                DANA
+            </option>
+        </select>
+
+       
+        <label for="virtualAccount">Masukkan Kode Virtual Account:</label>
+        <input type="text" id="virtualAccount" name="virtualAccount" required>
+
+        
+        <label for="amount">Jumlah Pembayaran:</label>
+        <input type="number" id="amount" name="amount" required>
+
+        <label for="studentName">Masukkan Total Keseluruhan Harga</label>
+        <input type="text" id="studentName" name="studentName" required>
+
+        <button type="button" onclick="processPayment()">Input Pembayaran </button>
+    </form>
+
+    <script>
+        function processPayment() {
+            var paymentType = document.getElementById('paymentType').value;
+            var studentName = document.getElementById('studentName').value;
+            var selectedClass = document.getElementById('class').value;
+            var paymentMethod = document.getElementById('paymentMethod').value;
+            var virtualAccount = document.getElementById('virtualAccount').value;
+            var amount = document.getElementById('amount').value;
+
+            function displayPaymentResult() {
+    // Tampilkan popup dengan SweetAlert
+    Swal.fire({
+        icon: 'success',
+        title: 'Pembayaran Berhasil!',
+        html: 'Bawa QR Code ini ke bagian keuangan untuk konfirmasi/mengambil seragam dan buku.<br><br>' +
+              '<div id="qrCodeContainer"></div>', // Tempat QR Code akan ditampilkan
+        confirmButtonColor: '#4CAF50',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        // Setelah user menekan tombol OK, tampilkan QR Code
+        showQRCode();
+    });
+}
+
+function showQRCode() {
+    var qrCodeContainer = document.getElementById('qrCodeContainer');
+    
+    // Buat QR Code dengan menggunakan library QRCode.js
+    var qrCode = new QRCode(qrCodeContainer, {
+        text: 'Informasi Pembayaran:\nNama: ' + studentName + '\nJumlah Pembayaran: ' + amount,
+        width: 128,
+        height: 128
+    });
+}
+
+
+            // Lakukan proses pembayaran sesuai dengan jenis pembayaran
+            
+
+            alert('Pembayaran berhasil! Jenis Pembayaran: ' + paymentType + ', Nama Siswa: ' + studentName + ', Kelas: ' + selectedClass + ', Metode Pembayaran: ' + paymentMethod + ', Kode Virtual Account: ' + virtualAccount + ', Jumlah Pembayaran: ' + amount);
+        }
+        
+    </script>
+    
+
+</body>
+</html>
+
+
