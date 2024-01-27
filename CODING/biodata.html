@@ -284,15 +284,17 @@
         txt_email.value = "";
       };
 
-      // Function to display data in the table
+        // Function to display data in the table
   const viewData = () => {
     let content_tabel = '';
 
     data.forEach((isi_data, looping_data) => {
       content_tabel += `
         <tr>
-          <th class="frame_table frame_header" colspan="2">BIODATA ${looping_data + 1}</th>
-        </tr>
+          <th class="frame_table frame_header" colspan="2">BIODATA</th>
+        </tr>`;
+
+      content_tabel += `
         <tr>
           <td class="frame_table">NISN</td>
           <td class="frame_table">${isi_data[0]}</td>
@@ -328,29 +330,17 @@
         <tr>
           <td class="frame_table">Email</td>
           <td class="frame_table">${isi_data[8]}</td>
-        </tr>
+        </tr>`;
+
+      content_tabel += `
         <tr>
-          <td class="frame_table remove_cell" colspan="2" style="text-align: center" onclick="removeData(${looping_data})">Hapus Data</td>
-        </tr>
-      `;
+          <th class="frame_table remove_cell" colspan="2" style="text-align: center" onclick="removeData(${looping_data})">Hapus Data</th>
+        </tr>`;
     });
 
     tbl_data.innerHTML = content_tabel;
     clearComponent();
   };
-
-
-      // Function to remove data based on selected index
-      const removeData = (index) => {
-        if (
-          confirm(
-            `Pendataan Siswa : ${data[index][2]} (index ke-${index}) Ingin Dihapus ?`
-          ) == true
-        ) {
-          data.splice(index, 1);
-          viewData();
-        }
-      };
     </script>
   </body>
 </html>
