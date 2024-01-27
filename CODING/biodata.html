@@ -1,270 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biodata Siswa</title>
+
+    <!-- Internal CSS -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
+      .area_component {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+      }
+      .area_label {
+        width: 15%;
+      }
+      .area_input {
+        width: 85%;
+      }
+      .txt_component {
+        width: 30%;
+      }
+      .cbo_component {
+        width: 30.7%;
+      }
+      .btn_component {
+        outline: 0;
+        border-radius: 25px;
+        border: 1px solid #333333;
+        height: 40px;
+        padding: 10px 30px;
+        cursor: pointer;
+        background: #f3f3f3;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .frame_table {
+        border: 1px solid #333333;
+        height: 30px;
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-        h2 {
-            text-align: center;
-        }
+      .frame_header {
+        background: #f3f3f3;
+        height: 30px;
+        padding: 10px;
+      }
 
-        form, table {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        label {
-            margin-bottom: 8px;
-        }
-
-        input,
-        textarea,
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* Menyesuaikan padding dan border ke dalam lebar total */
-        }
-
-        input[type="submit"],
-        input[type="button"] {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        input[type="button"] {
-            padding: 10px;
-            cursor: pointer;
-            display: block;
-            margin-top: 10px;
-        }
-
-        #biodataContainer {
-            display: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 20px;
-        }
-
-        #biodataContainer table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
-
-        #biodataContainer th, #biodataContainer td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            background-color: #fff; /* Mengubah warna latar belakang menjadi putih */
-        }
-
-        #biodataContainer th {
-            background-color: #4caf50;
-            color: #fff;
-        }
+      .remove_cell {
+        background-color: #ffbbbb;
+        cursor: pointer;
+      }
     </style>
-    <title>Form Biodata Mahasiswa</title>
-</head>
-<body>
-    <div class="container">
-        <h2>Form Biodata Mahasiswa</h2>
-        <form id="biodataForm" action="#" method="post">
-            <label for="nama">Nama:</label>
-            <input type="text" id="nama" name="nama" required>
+  </head>
+  <body>
+    <!-- NISN -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="txt_nisn">NISN</label>
+      </section>
+      <section class="area_input">
+        <input
+          type="text"
+          name=""
+          id="txt_nisn"
+          placeholder="Isi NISN Siswa"
+          class="txt_component"
+        />
+      </section>
+    </section>
 
-            <label for="npm">NPM:</label>
-            <input type="text" id="npm" name="npm" required>
+    <!-- Kelas -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="cbo_kelas">Kelas</label>
+      </section>
+      <section class="area_input">
+        <select name="" id="cbo_kelas" class="cbo_component">
+          <option value="-">Pilih Kelas</option>
+          <option value="">VI</option>
+          <option value="Sistem Informasi">VII</option>
+          <option value="Informatika">IX</option>
+        </select>
+      </section>
+    </section>
 
-            <label for="prodi">Program Studi:</label>
-            <input type="text" id="prodi" name="prodi" required>
+    <!-- Nama Lengkap -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="txt_nama">Nama Lengkap</label>
+      </section>
+      <section class="area_input">
+        <input
+          type="text"
+          name=""
+          id="txt_nama"
+          placeholder="Isi Nama Lengkap Siswa"
+          class="txt_component"
+        />
+      </section>
+    </section>
 
-            <label for="tempat_lahir">Tempat Lahir:</label>
-            <input type="text" id="tempat_lahir" name="tempat_lahir" required>
+    <!-- Jenis Kelamin -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="cbo_jenis_kelamin">Jenis Kelamin</label>
+      </section>
+      <section class="area_input">
+        <select name="" id="cbo_jenis_kelamin" class="cbo_component">
+          <option value="-">Pilih Jenis Kelamin</option>
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+      </section>
+    </section>
 
-            <label for="tgl_lahir">Tanggal Lahir:</label>
-            <input type="date" id="tgl_lahir" name="tgl_lahir" required>
+    <!-- Tempat Lahir -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="txt_tempat_lahir">Tempat Lahir</label>
+      </section>
+      <section class="area_input">
+        <input
+          type="text"
+          name=""
+          id="txt_tempat_lahir"
+          placeholder="Isi Tempat Lahir Siswa"
+          class="txt_component"
+        />
+      </section>
+    </section>
 
-            <label for="jenis_kelamin">Jenis Kelamin:</label>
-            <select id="jenis_kelamin" name="jenis_kelamin" required>
-                <option value="L">Laki-laki</option>
-                <option value="P">Perempuan</option>
-            </select>
+    <!-- Tanggal Lahir -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="txt_tanggal_lahir">Tanggal Lahir</label>
+      </section>
+      <section class="area_input">
+        <input
+          type="date"
+          name=""
+          id="txt_tanggal_lahir"
+          class="txt_component"
+        />
+      </section>
+    </section>
 
-            <label for="agama">Agama:</label>
-            <input type="text" id="agama" name="agama" required>
+    <!-- Agama -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="cbo_agama">Agama</label>
+      </section>
+      <section class="area_input">
+        <select name="" id="cbo_agama" class="cbo_component">
+          <option value="-">Pilih Agama</option>
+          <option value="Islam">Islam</option>
+          <option value="Kristen">Kristen</option>
+          <option value="Hindu">Hindu</option>
+          <option value="Buddha">Buddha</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </section>
+    </section>
 
-            <label for="tahun_masuk">Tahun Masuk Kuliah:</label>
-            <input type="text" id="tahun_masuk" name="tahun_masuk" required>
+    <!-- No. Telp -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="txt_no_telp">No. Telp</label>
+      </section>
+      <section class="area_input">
+        <input
+          type="tel"
+          name=""
+          id="txt_no_telp"
+          placeholder="Isi No. Telp Siswa"
+          class="txt_component"
+        />
+      </section>
+    </section>
 
-            <label for="alamat">Alamat:</label>
-            <textarea id="alamat" name="alamat" required></textarea>
+    <!-- Email -->
+    <section class="area_component">
+      <section class="area_label">
+        <label for="txt_email">Email</label>
+      </section>
+      <section class="area_input">
+        <input
+          type="email"
+          name=""
+          id="txt_email"
+          placeholder="Isi Email Siswa"
+          class="txt_component"
+        />
+      </section>
+    </section>
 
-            <input type="submit" value="Save" id="saveButton">
-            <input type="button" value="Edit" id="editButton" style="display:none;">
-        </form>
+    <!-- Button Tambah Data -->
+    <section class="area_component">
+      <button id="btn_tambah" class="btn_component">Tambah Data</button>
+    </section>
 
-        <div id="biodataContainer" style="display:none;">
-            <h2>Biodata Mahasiswa</h2>
-            <table>
-                <tr>
-                    <th>Nama</th>
-                    <td id="displayNama"></td>
-                </tr>
-                <tr>
-                    <th>NPM</th>
-                    <td id="displayNpm"></td>
-                </tr>
-                <tr>
-                    <th>Program Studi</th>
-                    <td id="displayProdi"></td>
-                </tr>
-                <tr>
-                    <th>Tempat Lahir</th>
-                    <td id="displayTempatLahir"></td>
-                </tr>
-                <tr>
-                    <th>Tanggal Lahir</th>
-                    <td id="displayTglLahir"></td>
-                </tr>
-                <tr>
-                    <th>Jenis Kelamin</th>
-                    <td id="displayJenisKelamin"></td>
-                </tr>
-                <tr>
-                    <th>Agama</th>
-                    <td id="displayAgama"></td>
-                </tr>
-                <tr>
-                    <th>Tahun Masuk Kuliah</th>
-                    <td id="displayTahunMasuk"></td>
-                </tr>
-                <tr>
-                    <th>Alamat</th>
-                    <td id="displayAlamat"></td>
-                </tr>
-            </table>
-            <input type="button" value="Save" id="saveButtonTable" style="display:none;">
-            <input type="button" value="Edit" id="editButtonTable" style="display:none;">
-        </div>
-    </div>
+    <!-- Data Table -->
+    <table id="tbl_data">
+      <tr>
+        <th class="frame_table frame_header" style="width: 10%">Aksi</th>
+        <th class="frame_table frame_header" style="width: 10%">No.</th>
+        <th class="frame_table frame_header" style="width: 15%">NISN</th>
+        <th class="frame_table frame_header" style="width: 15%">Kelas</th>
+        <th class="frame_table frame_header" style="width: 20%">Nama Lengkap</th>
+        <th class="frame_table frame_header" style="width: 15%">Jenis Kelamin</th>
+        <th class="frame_table frame_header" style="width: 15%">Tempat Lahir</th>
+        <th class="frame_table frame_header" style="width: 15%">Tanggal Lahir</th>
+        <th class="frame_table frame_header" style="width: 10%">Agama</th>
+        <th class="frame_table frame_header" style="width: 15%">No. Telp</th>
+        <th class="frame_table frame_header" style="width: 20%">Email</th>
+      </tr>
+    </table>
 
+    <!-- Internal JS -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('biodataForm');
-            const saveButton = document.getElementById('saveButton');
-            const editButton = document.getElementById('editButton');
-            const saveButtonTable = document.getElementById('saveButtonTable');
-            const editButtonTable = document.getElementById('editButtonTable');
-            const biodataContainer = document.getElementById('biodataContainer');
-            const displayNama = document.getElementById('displayNama');
-            const displayNpm = document.getElementById('displayNpm');
-            const displayProdi = document.getElementById('displayProdi');
-            const displayTempatLahir = document.getElementById('displayTempatLahir');
-            const displayTglLahir = document.getElementById('displayTglLahir');
-            const displayJenisKelamin = document.getElementById('displayJenisKelamin');
-            const displayAgama = document.getElementById('displayAgama');
-            const displayTahunMasuk = document.getElementById('displayTahunMasuk');
-            const displayAlamat = document.getElementById('displayAlamat');
+      // Initialization of variables
+      let txt_nisn = document.querySelector("#txt_nisn");
+      let cbo_kelas = document.querySelector("#cbo_kelas");
+      let txt_nama = document.querySelector("#txt_nama");
+      let cbo_jenis_kelamin = document.querySelector("#cbo_jenis_kelamin");
+      let txt_tempat_lahir = document.querySelector("#txt_tempat_lahir");
+      let txt_tanggal_lahir = document.querySelector("#txt_tanggal_lahir");
+      let cbo_agama = document.querySelector("#cbo_agama");
+      let txt_no_telp = document.querySelector("#txt_no_telp");
+      let txt_email = document.querySelector("#txt_email");
+      let btn_tambah = document.querySelector("#btn_tambah");
+      let tbl_data = document.querySelector("#tbl_data");
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevents the form from submitting
+      // Initialization of array variable to store data
+      let data = [];
 
-                // Get form values
-                const nama = document.getElementById('nama').value;
-                const npm = document.getElementById('npm').value;
-                const prodi = document.getElementById('prodi').value;
-                const tempat_lahir = document.getElementById('tempat_lahir').value;
-                const tgl_lahir = document.getElementById('tgl_lahir').value;
-                const jenis_kelamin = document.getElementById('jenis_kelamin').value;
-                const agama = document.getElementById('agama').value;
-                const tahun_masuk = document.getElementById('tahun_masuk').value;
-                const alamat = document.getElementById('alamat').value;
+      // Event when "btn_tambah" is clicked
+      btn_tambah.addEventListener("click", () => {
+        if (
+          txt_nisn.value == "" ||
+          cbo_kelas.value == "-" ||
+          txt_nama.value == "" ||
+          cbo_jenis_kelamin.value == "-" ||
+          txt_tempat_lahir.value == "" ||
+          txt_tanggal_lahir.value == "" ||
+          cbo_agama.value == "-" ||
+          txt_no_telp.value == "" ||
+          txt_email.value == ""
+        ) {
+          alert("Lengkapi Seluruh Data!");
+        } else {
+          data.push([
+            txt_nisn.value,
+            cbo_kelas.value,
+            txt_nama.value,
+            cbo_jenis_kelamin.value,
+            txt_tempat_lahir.value,
+            txt_tanggal_lahir.value,
+            cbo_agama.value,
+            txt_no_telp.value,
+            txt_email.value
+          ]);
+          viewData();
+        }
+      });
 
-                // Display biodata
-                displayNama.textContent = nama;
-                displayNpm.textContent = npm;
-                displayProdi.textContent = prodi;
-                displayTempatLahir.textContent = tempat_lahir;
-                displayTglLahir.textContent = tgl_lahir;
-                displayJenisKelamin.textContent = jenis_kelamin === 'L' ? 'Laki-laki' : 'Perempuan';
-                displayAgama.textContent = agama;
-                displayTahunMasuk.textContent = tahun_masuk;
-                displayAlamat.textContent = alamat;
+      // Function to clear input components
+      const clearComponent = () => {
+        txt_nisn.value = "";
+        cbo_kelas.value = "-";
+        txt_nama.value = "";
+        cbo_jenis_kelamin.value = "-";
+        txt_tempat_lahir.value = "";
+        txt_tanggal_lahir.value = "";
+        cbo_agama.value = "-";
+        txt_no_telp.value = "";
+        txt_email.value = "";
+      };
 
-                // Show biodata container
-                biodataContainer.style.display = 'block';
+      // Function to display data in the table
+      const viewData = () => {
+        let baris_tabel = 0;
+        let content_tabel = `<tr>
+          <th class="frame_table frame_header" style="width: 10%">Aksi</th>
+          <th class="frame_table frame_header" style="width: 10%">No.</th>
+          <th class="frame_table frame_header" style="width: 15%">NISN</th>
+          <th class="frame_table frame_header" style="width: 15%">Kelas</th>
+          <th class="frame_table frame_header" style="width: 20%">Nama Lengkap</th>
+          <th class="frame_table frame_header" style="width: 15%">Jenis Kelamin</th>
+          <th class="frame_table frame_header" style="width: 15%">Tempat Lahir</th>
+          <th class="frame_table frame_header" style="width: 15%">Tanggal Lahir</th>
+          <th class="frame_table frame_header" style="width: 10%">Agama</th>
+          <th class="frame_table frame_header" style="width: 15%">No. Telp</th>
+          <th class="frame_table frame_header" style="width: 20%">Email</th>
+        </tr>`;
 
-                // Hide form, show edit button
-                form.style.display = 'none';
-                editButton.style.display = 'block';
-                saveButton.style.display = 'none';
-                saveButtonTable.style.display = 'none';
-                editButtonTable.style.display = 'none';
-            });
-
-            editButton.addEventListener('click', function () {
-                // Show form, hide biodata container
-                form.style.display = 'flex';
-                editButton.style.display = 'none';
-                saveButton.style.display = 'inline';
-                saveButtonTable.style.display = 'none';
-                editButtonTable.style.display = 'none';
-
-                // Hide biodata container
-                biodataContainer.style.display = 'none';
-            });
-
-            saveButtonTable.addEventListener('click', function () {
-                // Show form, hide biodata container
-                form.style.display = 'flex';
-                editButton.style.display = 'none';
-                saveButton.style.display = 'inline';
-                saveButtonTable.style.display = 'none';
-                editButtonTable.style.display = 'none';
-
-                // Hide biodata container
-                biodataContainer.style.display = 'none';
-            });
-
-            editButtonTable.addEventListener('click', function () {
-                // Show form, hide biodata container
-                form.style.display = 'flex';
-                editButton.style.display = 'none';
-                saveButton.style.display = 'inline';
-                saveButtonTable.style.display = 'none';
-                editButtonTable.style.display = 'none';
-
-                // Hide biodata container
-                biodataContainer.style.display = 'none';
-            });
+        data.forEach((isi_data, looping_data) => {
+          content_tabel += "<tr>";
+          content_tabel += `<td class="frame_table remove_cell" style="text-align: center" onclick="removeData(${looping_data})">Hapus Data</td>`;
+          content_tabel += `<td class="frame_table" style="text-align: center">${looping_data + 1}</td>`;
+          content_tabel += `<td class="frame_table" style="text-align: center">${isi_data[0]}</td>`;
+          content_tabel += `<td class="frame_table">${isi_data[1]}</td>`;
+          content_tabel += `<td class="frame_table">${isi_data[2]}</td>`;
+          content_tabel += `<td class="frame_table" style="text-align: center">${isi_data[3]}</td>`;
+          content_tabel += `<td class="frame_table">${isi_data[4]}</td>`;
+          content_tabel += `<td class="frame_table" style="text-align: center">${isi_data[5]}</td>`;
+          content_tabel += `<td class="frame_table">${isi_data[6]}</td>`;
+          content_tabel += `<td class="frame_table" style="text-align: center">${isi_data[7]}</td>`;
+          content_tabel += `<td class="frame_table">${isi_data[8]}</td>`;
+          content_tabel += "</tr>";
+          baris_tabel++;
         });
+
+        tbl_data.innerHTML = content_tabel;
+        clearComponent();
+      };
+
+      // Function to remove data based on selected index
+      const removeData = (index) => {
+        if (
+          confirm(
+            `Pendataan Siswa : ${data[index][2]} (index ke-${index}) Ingin Dihapus ?`
+          ) == true
+        ) {
+          data.splice(index, 1);
+          viewData();
+        }
+      };
     </script>
-</body>
+  </body>
 </html>
