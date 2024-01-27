@@ -4,80 +4,105 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Biodata Siswa</title>
+ <!-- Internal CSS -->
+ <style>
+  body {
+    background-color: #e6f7e6; /* Light green background */
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
 
-    <!-- Internal CSS -->
-    <style>
-      body {
-        background-color: #e6f7e6; /* Light green background */
-        font-family: 'Arial', sans-serif;
-      }
+  .navbar {
+    background-color: #4caf50; /* Green background */
+    overflow: hidden;
+  }
 
-      .area_component {
-        display: flex;
-        align-items: center;
-        margin: 10px;
-      }
+  .navbar a {
+    float: left;
+    display: block;
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
 
-      .area_label {
-        width: 15%;
-      }
+  .navbar a:hover {
+    background-color: #ddd; /* Light grey background on hover */
+    color: #000; /* Black text on hover */
+  }
 
-      .area_input {
-        width: 85%;
-      }
+  .area_component {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
 
-      .txt_component, .cbo_component {
-        width: 100%;
-        padding: 8px;
-        margin: 5px 0;
-        border: 1px solid #4caf50; /* Green border */
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
+  .area_label {
+    width: 15%;
+  }
 
-      .btn_component {
-        outline: 0;
-        border-radius: 25px;
-        border: 1px solid #4caf50; /* Green border */
-        height: 40px;
-        padding: 10px 30px;
-        cursor: pointer;
-        background: #4caf50; /* Green background */
-        color: #fff; /* White text */
-        font-weight: bold;
-      }
+  .area_input {
+    width: 85%;
+  }
 
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;
-      }
+  .txt_component,
+  .cbo_component {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #4caf50; /* Green border */
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-      .frame_table {
-        border: 1px solid #4caf50; /* Green border */
-        height: 30px;
-        padding: 10px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+  .btn_component {
+    outline: 0;
+    border-radius: 25px;
+    border: 1px solid #4caf50; /* Green border */
+    height: 40px;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: #4caf50; /* Green background */
+    color: #fff; /* White text */
+    font-weight: bold;
+  }
 
-      .frame_header {
-        background: #4caf50; /* Green background */
-        height: 30px;
-        padding: 10px;
-        color: #fff; /* White text */
-      }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
 
-      .remove_cell {
-        background-color: #ffbbbb;
-        cursor: pointer;
-        color: #f44336; /* Red text */
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Internal JS -->
+  .frame_table {
+    border: 1px solid #4caf50; /* Green border */
+    height: 30px;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .frame_header {
+    background: #4caf50; /* Green background */
+    height: 30px;
+    padding: 10px;
+    color: #fff; /* White text */
+  }
+
+  .remove_cell {
+    background-color: #ffbbbb;
+    cursor: pointer;
+    color: #f44336; /* Red text */
+  }
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <a href="#">Biodata</a>
+  <a href="#">Pembayaran</a>
+</div>
   
     <!-- NISN -->
     <section class="area_component">
