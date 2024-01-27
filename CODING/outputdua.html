@@ -59,8 +59,8 @@
         
        
 
-    <h2>Selamat Datang di Layanan Pembayaran SMP Negeri 3 Muhammadiyah!<br>
-    Silahkan Isi data yang tertera dibawah ini untuk melakukan pembayaran</h2>
+    <h2>Selamat Datang di Layanan Pembayaran SMP Negeri 3 Muhammadiyah! <br>
+        Silahkan Isi data yang tertera dibawah ini untuk melakukan pembayaran</h2>
 
     <form id="paymentForm">
         <label for="paymentType">Pilih Jenis Pembayaran:</label>
@@ -78,7 +78,7 @@
 
         <!-- Input untuk Nama Lengkap Siswa -->
         <label for="studentName">Nama Lengkap</label>
-        <input type="text" id="studentName" name="studentName" placeholder="Nama Lengkap Siswa SMP N 3 Muhammadiyah" required>
+        <input type="text" id="studentName" name="studentName" placeholder="Isi Nama Lengkap Siswa SMP N 3 Muhammadiyah" required>
 
         <!-- Pilihan Kelas -->
         <label for="class">Pilih Kelas</label>
@@ -109,10 +109,10 @@
         <label for="amount">Jumlah Pembayaran:</label>
         <input type="number" id="amount" name="amount" required>
 
-        <label for="studentName">Masukkan Nominal Harga</label>
+        <label for="studentName">Masukkan Total Keseluruhan Harga</label>
         <input type="text" id="studentName" name="studentName" required>
 
-        <button type="button" onclick="processPayment()">Proses Pembayaran</button>
+        <button type="button" onclick="processPayment()">Proses Pembayaran </button>
     </form>
 
     <script>
@@ -148,10 +148,7 @@ function showQRCode() {
         width: 128,
         height: 128
     });
-
-
-
-
+}
 
 
             // Lakukan proses pembayaran sesuai dengan jenis pembayaran
