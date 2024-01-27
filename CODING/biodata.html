@@ -7,39 +7,54 @@
 
     <!-- Internal CSS -->
     <style>
+      body {
+        background-color: #e6f7e6; /* Light green background */
+        font-family: 'Arial', sans-serif;
+      }
+
       .area_component {
         display: flex;
         align-items: center;
         margin: 10px;
       }
+
       .area_label {
         width: 15%;
       }
+
       .area_input {
         width: 85%;
       }
-      .txt_component {
-        width: 30%;
+
+      .txt_component, .cbo_component {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #4caf50; /* Green border */
+        border-radius: 4px;
+        box-sizing: border-box;
       }
-      .cbo_component {
-        width: 30.7%;
-      }
+
       .btn_component {
         outline: 0;
         border-radius: 25px;
-        border: 1px solid #333333;
+        border: 1px solid #4caf50; /* Green border */
         height: 40px;
         padding: 10px 30px;
         cursor: pointer;
-        background: #f3f3f3;
+        background: #4caf50; /* Green background */
+        color: #fff; /* White text */
+        font-weight: bold;
       }
+
       table {
         border-collapse: collapse;
         width: 100%;
+        margin-top: 20px;
       }
 
       .frame_table {
-        border: 1px solid #333333;
+        border: 1px solid #4caf50; /* Green border */
         height: 30px;
         padding: 10px;
         white-space: nowrap;
@@ -48,18 +63,22 @@
       }
 
       .frame_header {
-        background: #f3f3f3;
+        background: #4caf50; /* Green background */
         height: 30px;
         padding: 10px;
+        color: #fff; /* White text */
       }
 
       .remove_cell {
         background-color: #ffbbbb;
         cursor: pointer;
+        color: #f44336; /* Red text */
       }
     </style>
   </head>
   <body>
+    <!-- Internal JS -->
+  
     <!-- NISN -->
     <section class="area_component">
       <section class="area_label">
@@ -85,8 +104,8 @@
         <select name="" id="cbo_kelas" class="cbo_component">
           <option value="-">Pilih Kelas</option>
           <option value="">VI</option>
-          <option value="Sistem Informasi">VII</option>
-          <option value="Informatika">IX</option>
+          <option value="VII">VII</option>
+          <option value="IX">IX</option>
         </select>
       </section>
     </section>
@@ -225,66 +244,72 @@
 
     <!-- Internal JS -->
     <script>
-      // Initialization of variables
-      let txt_nisn = document.querySelector("#txt_nisn");
-      let cbo_kelas = document.querySelector("#cbo_kelas");
-      let txt_nama = document.querySelector("#txt_nama");
-      let cbo_jenis_kelamin = document.querySelector("#cbo_jenis_kelamin");
-      let txt_tempat_lahir = document.querySelector("#txt_tempat_lahir");
-      let txt_tanggal_lahir = document.querySelector("#txt_tanggal_lahir");
-      let cbo_agama = document.querySelector("#cbo_agama");
-      let txt_no_telp = document.querySelector("#txt_no_telp");
-      let txt_email = document.querySelector("#txt_email");
-      let btn_tambah = document.querySelector("#btn_tambah");
-      let tbl_data = document.querySelector("#tbl_data");
+     // Initialization of variables
+  let txt_nisn = document.querySelector("#txt_nisn");
+  let cbo_kelas = document.querySelector("#cbo_kelas");
+  let txt_nama = document.querySelector("#txt_nama");
+  let cbo_jenis_kelamin = document.querySelector("#cbo_jenis_kelamin");
+  let txt_tempat_lahir = document.querySelector("#txt_tempat_lahir");
+  let txt_tanggal_lahir = document.querySelector("#txt_tanggal_lahir");
+  let cbo_agama = document.querySelector("#cbo_agama");
+  let txt_no_telp = document.querySelector("#txt_no_telp");
+  let txt_email = document.querySelector("#txt_email");
+  let btn_tambah = document.querySelector("#btn_tambah");
+  let tbl_data = document.querySelector("#tbl_data");
 
-      // Initialization of array variable to store data
-      let data = [];
+  // Initialization of array variable to store data
+  let data = [];
 
-      // Event when "btn_tambah" is clicked
-      btn_tambah.addEventListener("click", () => {
-        if (
-          txt_nisn.value == "" ||
-          cbo_kelas.value == "-" ||
-          txt_nama.value == "" ||
-          cbo_jenis_kelamin.value == "-" ||
-          txt_tempat_lahir.value == "" ||
-          txt_tanggal_lahir.value == "" ||
-          cbo_agama.value == "-" ||
-          txt_no_telp.value == "" ||
-          txt_email.value == ""
-        ) {
-          alert("Lengkapi Seluruh Data!");
-        } else {
-          data.push([
-            txt_nisn.value,
-            cbo_kelas.value,
-            txt_nama.value,
-            cbo_jenis_kelamin.value,
-            txt_tempat_lahir.value,
-            txt_tanggal_lahir.value,
-            cbo_agama.value,
-            txt_no_telp.value,
-            txt_email.value
-          ]);
-          viewData();
-        }
-      });
+  // Event when "btn_tambah" is clicked
+  btn_tambah.addEventListener("click", () => {
+    if (
+      txt_nisn.value == "" ||
+      cbo_kelas.value == "-" ||
+      txt_nama.value == "" ||
+      cbo_jenis_kelamin.value == "-" ||
+      txt_tempat_lahir.value == "" ||
+      txt_tanggal_lahir.value == "" ||
+      cbo_agama.value == "-" ||
+      txt_no_telp.value == "" ||
+      txt_email.value == ""
+    ) {
+      alert("Lengkapi Seluruh Data!");
+    } else {
+      data.push([
+        txt_nisn.value,
+        cbo_kelas.value,
+        txt_nama.value,
+        cbo_jenis_kelamin.value,
+        txt_tempat_lahir.value,
+        txt_tanggal_lahir.value,
+        cbo_agama.value,
+        txt_no_telp.value,
+        txt_email.value
+      ]);
+      viewData();
+    }
+  });
 
-      // Function to clear input components
-      const clearComponent = () => {
-        txt_nisn.value = "";
-        cbo_kelas.value = "-";
-        txt_nama.value = "";
-        cbo_jenis_kelamin.value = "-";
-        txt_tempat_lahir.value = "";
-        txt_tanggal_lahir.value = "";
-        cbo_agama.value = "-";
-        txt_no_telp.value = "";
-        txt_email.value = "";
-      };
+  // Function to remove data from the array
+  const removeData = (index) => {
+    data.splice(index, 1);
+    viewData();
+  };
 
-        // Function to display data in the table
+  // Function to clear input components
+  const clearComponent = () => {
+    txt_nisn.value = "";
+    cbo_kelas.value = "-";
+    txt_nama.value = "";
+    cbo_jenis_kelamin.value = "-";
+    txt_tempat_lahir.value = "";
+    txt_tanggal_lahir.value = "";
+    cbo_agama.value = "-";
+    txt_no_telp.value = "";
+    txt_email.value = "";
+  };
+
+  // Function to display data in the table
   const viewData = () => {
     let content_tabel = '';
 
